@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UserVerify</title>
+<script type="text/javascript" src="../cssjs/jquery.min.js"></script>
+<style>
+#userName {
+    border: 1px solid red;
+}
+</style>
+<script type="text/javascript">
+$().ready(function(){
+    $('#btnVerify').click(function(){
+        var userName = $('#userName').val();
+        if(userName=='')
+            alert('用户名不能为空!');
+        else{
+        $.get('http://localhost:8000/xweb/jquery/userverify.jsp?user='+userName,null,function(response){
+            $('#result').html(response);
+        })
+        }
+    })
+});
+</script>
+</head>
+<body>
+请输入UserName：<input type="text" id="userName"><input type="button" id="btnVerify" value="校验">
+<div id="result"></div>
+</body>
+</html>
