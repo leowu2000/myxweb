@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 配置urlMapping -->
+<beans default-autowire="byName">
+	<bean id="appHandlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+                /user.do=UserController
+				/test.do=TestController
+                /student.do=StudentController
+			</value>
+		</property>
+	</bean>
+
+<!-- viewResolver 视图解析器,将视图名(ModelAndView中的view)解析成URL-->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.InternalResourceView" />
+	</bean>
+
+<!--multipartResolver 支持分段文件上传 使用时form需要加上enctype="multipart/form-data"属性-->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="500400000" />
+		<property name="maxInMemorySize" value="4096" />
+    </bean>
+
+<!-- 定义上面urlMapping所对应的类 -->
+    <bean id="UserController" class="com.basesoft.system.controller.UserController"/>
+	<bean id="TestController" class="com.basesoft.modules.sample1.TestController"/>
+    <bean id="StudentController" class="com.basesoft.modules.sample2.StudentController"/>
+
+</beans>
+
