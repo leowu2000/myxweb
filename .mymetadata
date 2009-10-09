@@ -3,11 +3,11 @@
   type="WEB"
   name="myxweb"
   id="myeclipse.1252855491656"
-  context-root="/xweb"
+  context-root="/myxweb"
   j2ee-spec="5.0"
   archive="myxweb.war">
   <attributes>
-    <attribute name="webrootdir" value="WebRoot" />
+    <attribute name="webrootdir" value="/WebRoot" />
   </attributes>
 </project-module>
 
